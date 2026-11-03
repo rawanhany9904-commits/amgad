@@ -20,33 +20,54 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      /* مزيج متدرج هادئ وأنيق من درجات الأزرق والأبيض والبرتقالي */
-      background: radial-gradient(circle at 10% 20%, rgba(255, 140, 66, 0.25) 0%, transparent 40%),
-                  radial-gradient(circle at 90% 80%, rgba(13, 71, 161, 0.4) 0%, transparent 50%),
-                  linear-gradient(135deg, #0b1f3a 0%, #1a365d 40%, #ffffff 180%);
+      /* خلفية فاتحة بتدرج ناعم بين الأبيض والأزرق الفاتح واللمسة البرتقالية */
+      background: radial-gradient(circle at 10% 10%, rgba(255, 245, 235, 1) 0%, transparent 60%),
+                  radial-gradient(circle at 90% 90%, rgba(230, 242, 255, 1) 0%, transparent 60%),
+                  linear-gradient(180deg, #edf5ff 0%, #f7f9fc 50%, #fff7f0 100%);
       background-attachment: fixed;
       overflow-x: hidden;
       padding: 20px;
+      position: relative;
+    }
+
+    /* خلفية النجوم المتناثرة */
+    .stars-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      background-image: 
+        radial-gradient(circle, #ff8c42 2px, transparent 2px),
+        radial-gradient(circle, #2b6cb0 2px, transparent 2px),
+        radial-gradient(circle, #f6ad55 3px, transparent 3px),
+        radial-gradient(circle, #3182ce 2px, transparent 2px);
+      background-size: 180px 180px, 240px 240px, 200px 200px, 260px 260px;
+      background-position: 20px 30px, 130px 80px, 70px 150px, 190px 220px;
+      opacity: 0.6;
     }
 
     .container {
       width: 100%;
-      max-width: 850px;
+      max-width: 800px;
       display: flex;
       justify-content: center;
       align-items: center;
       perspective: 1200px;
+      z-index: 1;
     }
 
-    /* المظروف المغلق */
+    /* المظروف البرتقالي المغلق */
     .envelope-wrapper {
       position: relative;
       width: 100%;
-      max-width: 520px;
-      height: 330px;
-      background-color: #0b2545;
-      border-radius: 16px;
-      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+      max-width: 480px;
+      height: 310px;
+      background-color: #ff9e3b;
+      border-radius: 18px;
+      box-shadow: 0 15px 35px rgba(255, 140, 0, 0.25), 0 5px 15px rgba(0,0,0,0.05);
       cursor: pointer;
       transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.5s ease;
       display: flex;
@@ -56,29 +77,29 @@
     }
 
     .envelope-wrapper:hover {
-      transform: translateY(-8px) scale(1.02);
+      transform: translateY(-6px) scale(1.02);
     }
 
     .envelope-wrapper.hide {
       opacity: 0;
-      transform: scale(0.8) translateY(-50px);
+      transform: scale(0.85) translateY(-40px);
       pointer-events: none;
       position: absolute;
     }
 
-    /* أغطية وتصميم المظروف */
+    /* غطاء المظروف العلوي والجوانب */
     .envelope-flap-top {
       position: absolute;
       top: 0;
       left: 0;
       width: 0;
       height: 0;
-      border-left: 260px solid transparent;
-      border-right: 260px solid transparent;
-      border-top: 175px solid #133a68;
+      border-left: 240px solid transparent;
+      border-right: 240px solid transparent;
+      border-top: 160px solid #f28b24;
       transform-origin: top;
       z-index: 3;
-      filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.2));
+      filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.1));
     }
 
     .envelope-pocket {
@@ -87,7 +108,6 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(180deg, transparent 40%, #081c35 100%);
       z-index: 2;
       pointer-events: none;
     }
@@ -99,10 +119,10 @@
       left: 0;
       width: 0;
       height: 0;
-      border-left: 260px solid #0f3057;
-      border-bottom: 165px solid #0f3057;
-      border-top: 165px solid transparent;
-      border-right: 260px solid transparent;
+      border-left: 240px solid #ff8f24;
+      border-bottom: 155px solid #ff8f24;
+      border-top: 155px solid transparent;
+      border-right: 240px solid transparent;
     }
 
     .envelope-pocket::after {
@@ -112,25 +132,25 @@
       right: 0;
       width: 0;
       height: 0;
-      border-right: 260px solid #0f3057;
-      border-bottom: 165px solid #0f3057;
-      border-top: 165px solid transparent;
-      border-left: 260px solid transparent;
+      border-right: 240px solid #ff8f24;
+      border-bottom: 155px solid #ff8f24;
+      border-top: 155px solid transparent;
+      border-left: 240px solid transparent;
     }
 
-    /* الختم الدائري المكتوب فيه الاسم */
+    /* الختم الدائري الأبيض بحدود زرقاء */
     .wax-seal {
       position: absolute;
       z-index: 4;
-      width: 110px;
-      height: 110px;
-      background: linear-gradient(135deg, #ff8c42 0%, #e65100 100%);
+      width: 95px;
+      height: 95px;
+      background: #ffffff;
       border-radius: 50%;
       display: flex;
       justify-content: center;
       align-items: center;
-      box-shadow: 0 8px 25px rgba(230, 81, 0, 0.5), inset 0 2px 5px rgba(255, 255, 255, 0.4);
-      border: 3px solid #ffb74d;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+      border: 3.5px solid #1a569d;
       transition: transform 0.3s ease;
     }
 
@@ -140,27 +160,23 @@
 
     .seal-text {
       font-family: 'Lemonada', cursive;
-      color: #ffffff;
-      font-size: 1.25rem;
+      color: #1a569d;
+      font-size: 1.15rem;
       font-weight: 700;
-      text-shadow: 1px 2px 4px rgba(0,0,0,0.4);
-      letter-spacing: 1px;
     }
 
     /* كارت الجواب المفتوح */
     .letter-card {
       width: 100%;
-      max-width: 800px;
+      max-width: 720px;
       background: #ffffff;
-      border-radius: 20px;
-      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
-      padding: 45px 40px;
+      border-radius: 24px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      padding: 16px;
       display: none;
       opacity: 0;
-      transform: translateY(40px) scale(0.95);
-      transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-      position: relative;
-      border: 1px solid rgba(255, 255, 255, 0.8);
+      transform: translateY(30px) scale(0.96);
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .letter-card.show {
@@ -171,69 +187,72 @@
 
     .card-content-layout {
       display: flex;
-      gap: 35px;
-      align-items: center;
+      border-radius: 18px;
+      overflow: hidden;
+      background: #ffffff;
+      border: 1px solid #eef2f7;
     }
 
-    /* الجانب الأيمن: النص */
-    .text-side {
-      flex: 1;
-    }
-
-    .message-body {
-      font-size: 1.25rem;
-      line-height: 2.1;
-      color: #1a2b4c;
-      font-weight: 600;
-      text-align: justify;
-    }
-
-    /* الجانب الأيسر: الصورة الخاصة بجواب الشخص */
+    /* الجانب الأيسر: الصورة الخاصة بأمجد */
     .image-side {
-      width: 220px;
-      flex-shrink: 0;
+      width: 250px;
+      background: #fff0f5;
       display: flex;
       justify-content: center;
       align-items: center;
+      padding: 20px;
+      flex-shrink: 0;
+      border-left: 1px solid #f0f0f0;
     }
 
     .badge-img {
       width: 100%;
-      max-width: 200px;
+      max-width: 180px;
       height: auto;
-      filter: drop-shadow(0 12px 20px rgba(0,0,0,0.15));
-      transition: transform 0.3s ease;
+      filter: drop-shadow(0 8px 15px rgba(0,0,0,0.1));
     }
 
-    .badge-img:hover {
-      transform: rotate(3deg) scale(1.05);
+    /* الجانب الأيمن: النص وخلفية الفن المضاء */
+    .text-side {
+      flex: 1;
+      padding: 40px 35px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.92) 0%, rgba(238,245,255,0.85) 100%),
+                  url('image_95d8a8.jpg');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
 
-    /* تجاوب الشاشات الصغيرة (الجوال) */
+    .message-body {
+      font-size: 1.2rem;
+      line-height: 2.2;
+      color: #1a365d;
+      font-weight: 700;
+      text-align: justify;
+    }
+
+    /* التجاوب مع الجوال */
     @media (max-width: 768px) {
       .envelope-wrapper {
-        height: 280px;
-      }
-      .wax-seal {
-        width: 95px;
-        height: 95px;
-      }
-      .seal-text {
-        font-size: 1.1rem;
+        height: 270px;
       }
       .card-content-layout {
         flex-direction: column-reverse;
-        gap: 25px;
-        text-align: center;
       }
       .image-side {
-        width: 160px;
+        width: 100%;
+        padding: 25px;
       }
-      .letter-card {
+      .badge-img {
+        max-width: 140px;
+      }
+      .text-side {
         padding: 30px 20px;
       }
       .message-body {
-        font-size: 1.1rem;
+        font-size: 1.05rem;
         line-height: 1.9;
         text-align: center;
       }
@@ -242,8 +261,10 @@
 </head>
 <body>
 
+  <div class="stars-bg"></div>
+
   <div class="container">
-    <!-- المظروف المغلق -->
+    <!-- المظروف البرتقالي المغلق -->
     <div class="envelope-wrapper" id="envelope" onclick="openEnvelope()">
       <div class="envelope-flap-top"></div>
       <div class="envelope-pocket"></div>
@@ -255,14 +276,14 @@
     <!-- كارت الجواب بعد الفتح -->
     <div class="letter-card" id="letter">
       <div class="card-content-layout">
-        <!-- قسم النص -->
+        <!-- قسم النص المكتوب مع خلفية الفن الزيتي الفاتحة -->
         <div class="text-side">
           <p class="message-body">
             باشمهندس امجد حقيقي من اكثر الناس المجتهده و ال بتحاول تطور من نفسها و تعرف ايه الجديد في مجالك ف حاول تحافظ على ده  و حقيقي انا شخصيا بحاول اتعلم منك ازاي اعمل ده و فعلا وجودك فارق في التيم  .. بالتوفيق ليك و بالتوفيق في الميدترم ✨
           </p>
         </div>
 
-        <!-- قسم الصورة الناتجة في الجانب -->
+        <!-- قسم الصورة على الجانب -->
         <div class="image-side">
           <img src="image_8b05c8.png" alt="Great Job Badge" class="badge-img">
         </div>
