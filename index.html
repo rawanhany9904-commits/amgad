@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>رسالة تقدير - Amgad</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Lemonada:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Cairo', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      /* مزيج متدرج هادئ وأنيق من درجات الأزرق والأبيض والبرتقالي */
+      background: radial-gradient(circle at 10% 20%, rgba(255, 140, 66, 0.25) 0%, transparent 40%),
+                  radial-gradient(circle at 90% 80%, rgba(13, 71, 161, 0.4) 0%, transparent 50%),
+                  linear-gradient(135deg, #0b1f3a 0%, #1a365d 40%, #ffffff 180%);
+      background-attachment: fixed;
+      overflow-x: hidden;
+      padding: 20px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 850px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      perspective: 1200px;
+    }
+
+    /* المظروف المغلق */
+    .envelope-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 520px;
+      height: 330px;
+      background-color: #0b2545;
+      border-radius: 16px;
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+      cursor: pointer;
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.5s ease;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .envelope-wrapper:hover {
+      transform: translateY(-8px) scale(1.02);
+    }
+
+    .envelope-wrapper.hide {
+      opacity: 0;
+      transform: scale(0.8) translateY(-50px);
+      pointer-events: none;
+      position: absolute;
+    }
+
+    /* أغطية وتصميم المظروف */
+    .envelope-flap-top {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 0;
+      border-left: 260px solid transparent;
+      border-right: 260px solid transparent;
+      border-top: 175px solid #133a68;
+      transform-origin: top;
+      z-index: 3;
+      filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.2));
+    }
+
+    .envelope-pocket {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(180deg, transparent 40%, #081c35 100%);
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .envelope-pocket::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 0;
+      border-left: 260px solid #0f3057;
+      border-bottom: 165px solid #0f3057;
+      border-top: 165px solid transparent;
+      border-right: 260px solid transparent;
+    }
+
+    .envelope-pocket::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 0;
+      height: 0;
+      border-right: 260px solid #0f3057;
+      border-bottom: 165px solid #0f3057;
+      border-top: 165px solid transparent;
+      border-left: 260px solid transparent;
+    }
+
+    /* الختم الدائري المكتوب فيه الاسم */
+    .wax-seal {
+      position: absolute;
+      z-index: 4;
+      width: 110px;
+      height: 110px;
+      background: linear-gradient(135deg, #ff8c42 0%, #e65100 100%);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 8px 25px rgba(230, 81, 0, 0.5), inset 0 2px 5px rgba(255, 255, 255, 0.4);
+      border: 3px solid #ffb74d;
+      transition: transform 0.3s ease;
+    }
+
+    .envelope-wrapper:hover .wax-seal {
+      transform: scale(1.08);
+    }
+
+    .seal-text {
+      font-family: 'Lemonada', cursive;
+      color: #ffffff;
+      font-size: 1.25rem;
+      font-weight: 700;
+      text-shadow: 1px 2px 4px rgba(0,0,0,0.4);
+      letter-spacing: 1px;
+    }
+
+    /* كارت الجواب المفتوح */
+    .letter-card {
+      width: 100%;
+      max-width: 800px;
+      background: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+      padding: 45px 40px;
+      display: none;
+      opacity: 0;
+      transform: translateY(40px) scale(0.95);
+      transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      border: 1px solid rgba(255, 255, 255, 0.8);
+    }
+
+    .letter-card.show {
+      display: block;
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .card-content-layout {
+      display: flex;
+      gap: 35px;
+      align-items: center;
+    }
+
+    /* الجانب الأيمن: النص */
+    .text-side {
+      flex: 1;
+    }
+
+    .message-body {
+      font-size: 1.25rem;
+      line-height: 2.1;
+      color: #1a2b4c;
+      font-weight: 600;
+      text-align: justify;
+    }
+
+    /* الجانب الأيسر: الصورة الخاصة بجواب الشخص */
+    .image-side {
+      width: 220px;
+      flex-shrink: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .badge-img {
+      width: 100%;
+      max-width: 200px;
+      height: auto;
+      filter: drop-shadow(0 12px 20px rgba(0,0,0,0.15));
+      transition: transform 0.3s ease;
+    }
+
+    .badge-img:hover {
+      transform: rotate(3deg) scale(1.05);
+    }
+
+    /* تجاوب الشاشات الصغيرة (الجوال) */
+    @media (max-width: 768px) {
+      .envelope-wrapper {
+        height: 280px;
+      }
+      .wax-seal {
+        width: 95px;
+        height: 95px;
+      }
+      .seal-text {
+        font-size: 1.1rem;
+      }
+      .card-content-layout {
+        flex-direction: column-reverse;
+        gap: 25px;
+        text-align: center;
+      }
+      .image-side {
+        width: 160px;
+      }
+      .letter-card {
+        padding: 30px 20px;
+      }
+      .message-body {
+        font-size: 1.1rem;
+        line-height: 1.9;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- المظروف المغلق -->
+    <div class="envelope-wrapper" id="envelope" onclick="openEnvelope()">
+      <div class="envelope-flap-top"></div>
+      <div class="envelope-pocket"></div>
+      <div class="wax-seal">
+        <span class="seal-text">Amgad</span>
+      </div>
+    </div>
+
+    <!-- كارت الجواب بعد الفتح -->
+    <div class="letter-card" id="letter">
+      <div class="card-content-layout">
+        <!-- قسم النص -->
+        <div class="text-side">
+          <p class="message-body">
+            باشمهندس امجد حقيقي من اكثر الناس المجتهده و ال بتحاول تطور من نفسها و تعرف ايه الجديد في مجالك ف حاول تحافظ على ده  و حقيقي انا شخصيا بحاول اتعلم منك ازاي اعمل ده و فعلا وجودك فارق في التيم  .. بالتوفيق ليك و بالتوفيق في الميدترم ✨
+          </p>
+        </div>
+
+        <!-- قسم الصورة الناتجة في الجانب -->
+        <div class="image-side">
+          <img src="image_8b05c8.png" alt="Great Job Badge" class="badge-img">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openEnvelope() {
+      const envelope = document.getElementById('envelope');
+      const letter = document.getElementById('letter');
+
+      envelope.classList.add('hide');
+      
+      setTimeout(() => {
+        letter.classList.add('show');
+      }, 300);
+    }
+  </script>
+</body>
+</html>
