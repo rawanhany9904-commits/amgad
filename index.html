@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>رسالة تقدير - Amgad</title>
+  <title>Amgad</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Lemonada:wght@600;700&display=swap" rel="stylesheet">
@@ -190,33 +190,33 @@
       border: 1px solid #e2e8f0;
       min-height: 280px;
     }
+.text-side {
+  flex: 1;
+  padding: 40px 35px;
+  position: relative;
+  /* أرضية بيضاء ناصعة مع إشعاع ناعم مريح */
+  background-color: #fdfefe;
+  background-image: radial-gradient(circle at 65% 15%, rgba(254, 243, 199, 0.45) 0%, transparent 45%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+}
 
-    /* الجانب الأيمن: النص وخلفية دوامات الفن المضاء الصافية */
-    .text-side {
-      flex: 1;
-      padding: 35px 30px;
-      position: relative;
-      background: radial-gradient(circle at 80% 20%, #ffffff 0%, #eef6ff 50%, #dbeafe 100%);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      overflow: hidden;
-    }
-
-    /* دوامات فنية مضاءة خلف الرسالة */
-    .text-side::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: 
-        radial-gradient(circle at 30% 40%, rgba(255, 183, 77, 0.18) 0%, transparent 40%),
-        radial-gradient(circle at 70% 60%, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
-        radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.8) 0%, transparent 60%);
-      pointer-events: none;
-    }
+/* طبقة الملمس الزيتي بدرجة الشفافية المطلوبة بالضبط */
+.text-side::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* صورة اللوحة الزيتية مدمجة بحساب الشفافية واللون الأبيض */
+  background: url('image_8931a6.jpg') center/cover no-repeat;
+  opacity: 0.15; /* درجة الشفافية الناعمة جداً فوق الأبيض */
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
 
     .message-body {
       position: relative;
