@@ -20,17 +20,17 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      /* خلفية فاتحة بتدرج ناعم بين الأبيض والأزرق الفاتح واللمسة البرتقالية */
-      background: radial-gradient(circle at 10% 10%, rgba(255, 245, 235, 1) 0%, transparent 60%),
-                  radial-gradient(circle at 90% 90%, rgba(230, 242, 255, 1) 0%, transparent 60%),
-                  linear-gradient(180deg, #edf5ff 0%, #f7f9fc 50%, #fff7f0 100%);
+      /* خلفية فاتحة بتدرج ناعم جداً كما بالصورة الأولى */
+      background: radial-gradient(circle at 15% 15%, #fffdf9 0%, transparent 50%),
+                  radial-gradient(circle at 85% 85%, #edf5ff 0%, transparent 60%),
+                  linear-gradient(180deg, #f5f8fc 0%, #eef4fc 50%, #fff7f0 100%);
       background-attachment: fixed;
       overflow-x: hidden;
       padding: 20px;
       position: relative;
     }
 
-    /* خلفية النجوم المتناثرة */
+    /* خلفية النجوم المتناثرة البرتقالية والزرقاء */
     .stars-bg {
       position: absolute;
       top: 0;
@@ -40,18 +40,18 @@
       pointer-events: none;
       z-index: 0;
       background-image: 
-        radial-gradient(circle, #ff8c42 2px, transparent 2px),
-        radial-gradient(circle, #2b6cb0 2px, transparent 2px),
+        radial-gradient(circle, #ff944d 2.5px, transparent 2.5px),
+        radial-gradient(circle, #3182ce 2px, transparent 2px),
         radial-gradient(circle, #f6ad55 3px, transparent 3px),
-        radial-gradient(circle, #3182ce 2px, transparent 2px);
-      background-size: 180px 180px, 240px 240px, 200px 200px, 260px 260px;
-      background-position: 20px 30px, 130px 80px, 70px 150px, 190px 220px;
-      opacity: 0.6;
+        radial-gradient(circle, #2b6cb0 2px, transparent 2px);
+      background-size: 190px 190px, 250px 250px, 210px 210px, 270px 270px;
+      background-position: 25px 35px, 140px 90px, 75px 160px, 200px 230px;
+      opacity: 0.65;
     }
 
     .container {
       width: 100%;
-      max-width: 800px;
+      max-width: 820px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -59,7 +59,7 @@
       z-index: 1;
     }
 
-    /* المظروف البرتقالي المغلق */
+    /* المظروف المغلق */
     .envelope-wrapper {
       position: relative;
       width: 100%;
@@ -67,7 +67,7 @@
       height: 310px;
       background-color: #ff9e3b;
       border-radius: 18px;
-      box-shadow: 0 15px 35px rgba(255, 140, 0, 0.25), 0 5px 15px rgba(0,0,0,0.05);
+      box-shadow: 0 15px 35px rgba(255, 140, 0, 0.22), 0 5px 15px rgba(0,0,0,0.05);
       cursor: pointer;
       transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.5s ease;
       display: flex;
@@ -87,7 +87,7 @@
       position: absolute;
     }
 
-    /* غطاء المظروف العلوي والجوانب */
+    /* غطاء المظروف */
     .envelope-flap-top {
       position: absolute;
       top: 0;
@@ -99,7 +99,7 @@
       border-top: 160px solid #f28b24;
       transform-origin: top;
       z-index: 3;
-      filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.1));
+      filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.08));
     }
 
     .envelope-pocket {
@@ -138,7 +138,7 @@
       border-left: 240px solid transparent;
     }
 
-    /* الختم الدائري الأبيض بحدود زرقاء */
+    /* الختم الدائري الأبيض لاسم Amgad */
     .wax-seal {
       position: absolute;
       z-index: 4;
@@ -168,11 +168,11 @@
     /* كارت الجواب المفتوح */
     .letter-card {
       width: 100%;
-      max-width: 720px;
+      max-width: 740px;
       background: #ffffff;
       border-radius: 24px;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-      padding: 16px;
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.1);
+      padding: 12px;
       display: none;
       opacity: 0;
       transform: translateY(30px) scale(0.96);
@@ -190,50 +190,71 @@
       border-radius: 18px;
       overflow: hidden;
       background: #ffffff;
-      border: 1px solid #eef2f7;
+      border: 1px solid #e2e8f0;
+      min-height: 380px;
     }
 
-    /* الجانب الأيسر: الصورة الخاصة بأمجد */
+    /* الجانب الأيمن: النص وخلفية الفن الزيتي الزرقاء والبيضاء والبرتقالية الفاتحة بالـ Pure CSS */
+    .text-side {
+      flex: 1;
+      padding: 45px 35px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background-color: #f0f6ff;
+      background-image: 
+        radial-gradient(circle at 80% 20%, rgba(255, 183, 3, 0.25) 0%, transparent 40%),
+        radial-gradient(circle at 20% 80%, rgba(147, 197, 253, 0.4) 0%, transparent 50%),
+        repeating-radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.8) 0, rgba(224, 242, 254, 0.6) 20px, rgba(255, 255, 255, 0.8) 40px);
+    }
+
+    /* لمسات فنية زرقاء وبرتقالية كدوامات زرقاء فاتحة فوق الخلفية */
+    .text-side::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: 
+        radial-gradient(ellipse at top right, rgba(255, 140, 0, 0.12), transparent 50%),
+        radial-gradient(ellipse at bottom left, rgba(59, 130, 246, 0.15), transparent 50%);
+      pointer-events: none;
+    }
+
+    .message-body {
+      position: relative;
+      z-index: 2;
+      font-size: 1.25rem;
+      line-height: 2.2;
+      color: #1e3a8a;
+      font-weight: 700;
+      text-align: justify;
+      text-shadow: 0 1px 2px rgba(255, 255, 255, 0.9);
+    }
+
+    /* الجانب الأيسر: الشارة (Great Job!) مصممة بـ SVG نقي مدمج */
     .image-side {
       width: 250px;
-      background: #fff0f5;
+      background: linear-gradient(135deg, #fffaf5 0%, #fff0e6 100%);
       display: flex;
       justify-content: center;
       align-items: center;
       padding: 20px;
       flex-shrink: 0;
-      border-left: 1px solid #f0f0f0;
+      border-left: 1px solid #ffe3d1;
     }
 
-    .badge-img {
+    .badge-wrapper {
       width: 100%;
-      max-width: 180px;
-      height: auto;
-      filter: drop-shadow(0 8px 15px rgba(0,0,0,0.1));
+      max-width: 190px;
+      filter: drop-shadow(0 10px 18px rgba(243, 111, 33, 0.25));
+      transition: transform 0.3s ease;
     }
 
-    /* الجانب الأيمن: النص وخلفية الفن المضاء */
-    .text-side {
-      flex: 1;
-      padding: 40px 35px;
-      background: linear-gradient(135deg, rgba(255,255,255,0.92) 0%, rgba(238,245,255,0.85) 100%),
-                  url('image_95d8a8.jpg');
-      background-size: cover;
-      background-position: center;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+    .badge-wrapper:hover {
+      transform: scale(1.05) rotate(2deg);
     }
 
-    .message-body {
-      font-size: 1.2rem;
-      line-height: 2.2;
-      color: #1a365d;
-      font-weight: 700;
-      text-align: justify;
-    }
-
-    /* التجاوب مع الجوال */
+    /* تجاوب الشاشات الصغرى */
     @media (max-width: 768px) {
       .envelope-wrapper {
         height: 270px;
@@ -243,17 +264,19 @@
       }
       .image-side {
         width: 100%;
-        padding: 25px;
+        padding: 30px;
+        border-left: none;
+        border-top: 1px solid #ffe3d1;
       }
-      .badge-img {
-        max-width: 140px;
+      .badge-wrapper {
+        max-width: 150px;
       }
       .text-side {
         padding: 30px 20px;
       }
       .message-body {
-        font-size: 1.05rem;
-        line-height: 1.9;
+        font-size: 1.08rem;
+        line-height: 1.95;
         text-align: center;
       }
     }
@@ -276,17 +299,45 @@
     <!-- كارت الجواب بعد الفتح -->
     <div class="letter-card" id="letter">
       <div class="card-content-layout">
-        <!-- قسم النص المكتوب مع خلفية الفن الزيتي الفاتحة -->
+        
+        <!-- قسم النص المكتوب مع خلفية الفن المضاء الزيتية الزرقاء والبرتقالية بالـ Pure CSS -->
         <div class="text-side">
           <p class="message-body">
             باشمهندس امجد حقيقي من اكثر الناس المجتهده و ال بتحاول تطور من نفسها و تعرف ايه الجديد في مجالك ف حاول تحافظ على ده  و حقيقي انا شخصيا بحاول اتعلم منك ازاي اعمل ده و فعلا وجودك فارق في التيم  .. بالتوفيق ليك و بالتوفيق في الميدترم ✨
           </p>
         </div>
 
-        <!-- قسم الصورة على الجانب -->
+        <!-- قسم الشارة الجانبية (GREAT JOB!) مبنية بنسبة 100% بالـ SVG الداخلي -->
         <div class="image-side">
-          <img src="image_8b05c8.png" alt="Great Job Badge" class="badge-img">
+          <div class="badge-wrapper">
+            <svg viewBox="0 0 200 240" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+              <!-- الشريط الأسفل (الشرائط الزرقاء/التركواز) -->
+              <path d="M 65,145 L 45,225 L 75,205 L 95,225 L 85,145 Z" fill="#00c4cc" stroke="#00999e" stroke-width="2"/>
+              <path d="M 135,145 L 115,225 L 135,205 L 155,225 L 145,145 Z" fill="#00c4cc" stroke="#00999e" stroke-width="2"/>
+              
+              <!-- إطار الوريدة البرتقالية الخارجية (Scalloped Edges) -->
+              <circle cx="100" cy="100" r="72" fill="#ff7a00"/>
+              <!-- دواير التعرج الحواف -->
+              <g fill="#ff7a00">
+                <circle cx="100" cy="24" r="14"/><circle cx="122" cy="28" r="14"/><circle cx="142" cy="39" r="14"/><circle cx="159" cy="56" r="14"/><circle cx="170" cy="77" r="14"/><circle cx="174" cy="100" r="14"/><circle cx="170" cy="123" r="14"/><circle cx="159" cy="144" r="14"/><circle cx="142" cy="161" r="14"/><circle cx="122" cy="172" r="14"/><circle cx="100" cy="176" r="14"/><circle cx="78" cy="172" r="14"/><circle cx="58" cy="161" r="14"/><circle cx="41" cy="144" r="14"/><circle cx="30" cy="123" r="14"/><circle cx="26" cy="100" r="14"/><circle cx="30" cy="77" r="14"/><circle cx="41" cy="56" r="14"/><circle cx="58" cy="39" r="14"/><circle cx="78" cy="28" r="14"/>
+              </g>
+
+              <!-- الحدود البيضاء الداخلية -->
+              <circle cx="100" cy="100" r="66" fill="#ffffff"/>
+              <!-- الدائرة الصفراء المركزية -->
+              <circle cx="100" cy="100" r="58" fill="#ffc107"/>
+
+              <!-- نص GREAT JOB! -->
+              <text x="100" y="86" text-anchor="middle" fill="#111111" font-family="Arial Black, Impact, sans-serif" font-weight="900" font-size="22" letter-spacing="1">GREAT</text>
+              <text x="100" y="122" text-anchor="middle" fill="#111111" font-family="Arial Black, Impact, sans-serif" font-weight="900" font-size="30" letter-spacing="1">JOB!</text>
+              
+              <!-- الإضاءات البيضاء اللامعة -->
+              <path d="M 60,65 A 45 45 0 0 1 120,55" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+              <path d="M 68,140 A 45 45 0 0 0 100,148" fill="none" stroke="#111111" stroke-width="3" stroke-linecap="round"/>
+            </svg>
+          </div>
         </div>
+
       </div>
     </div>
   </div>
